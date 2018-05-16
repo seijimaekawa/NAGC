@@ -11,7 +11,7 @@ file_list = ["disney","amazon","enron","WebKB","citeseer","cora"]
 
 program descriptions are below:
 
-  implement.py
+### implement.py
   
     This program is for implementation of NJNMF.
     Before you execute, type "python implement.py -h" and check options.
