@@ -1,10 +1,10 @@
 # NJNMF
 Non-Linear Joint Weighted NMF for attributed graph
 
-##Description
+## Description
 NJNMF is a clustering algorithm for attributed graph. It outperforms existing methods by using a non-linear function.
 
-##How to use
+## How to use
      $python implement.py -f FILE_NUMBER -m MODEL_NAME -k No.TOPIC1 -k2 No.TOPIC2
 
 file_list = ["disney","amazon","enron","WebKB","citeseer","cora"]
