@@ -31,11 +31,9 @@ program descriptions are below:
 ### att_clustering.py
   
     kmeans algorithm is written in this program.
-    
     ex. $python att_clustering.py -f FILE_NUMBER -k No.CLUSTERS -r REGULARIZATION
     
 ### draw_graph.py
     
     This program draws the graph from an adjacency matrix and a list of clusters which nodes belong to. 
-    
     It makes us easily understand the overview of the clustering result. 
