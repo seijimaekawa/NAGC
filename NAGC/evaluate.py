@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#this program include calculater of modularity, entropy and NMI
-#cal_dif_entropy is for continuos values
+#this program include calculater of modularity, entropy, NMI and ARI
 import sys
 import scipy.stats
 import numpy as np
@@ -10,9 +9,6 @@ import scipy.io
 from scipy.sparse import lil_matrix, csr_matrix
 import math
 from sklearn.metrics.cluster import adjusted_rand_score
-# import networkx as nx
-# import matplotlib.pyplot as plt
-# import community
 
 def evaluate(mod,ent,spl,nmi,ari,true_clus,clus,pred,S,A,ent_flag,with_gt):
     k = len(clus)
@@ -42,40 +38,6 @@ def cal_modularity(clus,S,k):
     Q=0
     for i in range(k):
         Q+=e[i][i]-a[i]*a[i]
-
-    # g = nx.Graph()
-    # for i in range(S.shape[0]):
-    #     g.add_node(i)
-    # nonzeros = S.nonzero()
-    # for i in range(len(nonzeros[0])):
-    #     g.add_edge(nonzeros[0][i],nonzeros[1][i])
-######## check whether conneted graph or not #########
-    # max_size = 0
-    # count = 0
-    # for component in nx.connected_components(g):
-    #     count+=1
-    #     if len(component) == 1:
-    #         print list(component)
-    #     if len(component) > max_size:
-    #             max_cluster = component
-    #             max_size = len(max_cluster)
-    # max_cluster = sorted(list(max_cluster))
-    # print "connected components size : ",
-    # print max_size
-    # print count
-    # nx.draw_networkx(g)
-    # plt.show()
-    # part = community.best_partition(g)
-    # print part
-
-    # part={}
-    # for i in range(len(clus)):
-    #     for j in clus[i]:
-    #         part[j]=i
-    # # print part
-    # mod = community.modularity(part,g)
-
-    # print(mod)
     return Q
 
 def cal_entropy(clus,A,k):
@@ -90,44 +52,6 @@ def cal_entropy(clus,A,k):
                     att+=1
             pk=[1.0*att/len(clus[j]),1.0-1.0*att/len(clus[j])]
             # print pk
-            E += len(clus[j]) * scipy.stats.entropy(pk)
-    return E/A.shape[0]/A.shape[1]
-
-# for continuos values
-def cal_dif_entropy(clus,A,k):
-    E=0
-    for t in range(A.shape[1]):
-        for j in range(k):
-            if len(clus[j])==0:
-                continue
-            att_list=[]
-            for n in clus[j]:
-                att_list.append(A[n,t])
-            # print att_list
-            d = np.var(att_list)
-            if d==0:
-                continue
-            E += len(clus[j])*0.5*(1+math.log(2*math.pi*d))
-    return E/A.shape[0]/A.shape[1]
-
-# split range of values into 10 sub-groups
-def split_entropy(clus,A,k):
-    E=0
-    for t in range(A.shape[1]):
-        for j in range(k):
-            if len(clus[j])==0:
-                continue
-            count=0
-            pk=[]
-            dic={}
-            for n in clus[j]:
-                count+=1
-                if A[n,t] in dic:
-                    dic[A[n,t]]+=1
-                else:
-                    dic[A[n,t]]=1
-            for l in dic:
-                pk.append(1.0*dic[l]/count)
             E += len(clus[j]) * scipy.stats.entropy(pk)
     return E/A.shape[0]/A.shape[1]
 
