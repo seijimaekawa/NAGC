@@ -79,9 +79,6 @@ def cal_nmi(true_clus, clus):
 #############################################
     n=sum(n_l)
     nmi = 0
-    #n_h : 正解集合hの文書数
-    #n_l : クラスタlの文書数
-    #n_hl : クラスタl中で正解集合hに属する文書数
     for h in range(len(n_h)):
         for l in range(len(n_l)):
             n_hl = len(list(set(t_clus_ind[h]) & set(clus[l])))
