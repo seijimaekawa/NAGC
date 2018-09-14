@@ -34,19 +34,6 @@ def initialize_V(A, centroids):
             V[i,j]= (sum(dis_list)-dis_list[j]) / sum(dis_list)
         V[i,:] = V[i,:] / sum(V[i,:])
     return V
-
-#if __name__ == '__main__':
-#    parser = argparse.ArgumentParser(
-#                prog='argparseTest', # プログラム名
-#                usage='Demonstration of argparser', # プログラムの利用方法
-#                description='need filename and the number of clusters', # 引数のヘルプの前に表示
-#                epilog='end', # 引数のヘルプの後で表示
-#                add_help=True, # -h/–help オプションの追加
-#                )
-#    parser.add_argument('-k', help='integer', type=int, default=1)
-#    parser.add_argument('-name', type=str, default="")
-#    parser.add_argument('-ent', type=int, default=0) # 属性に連続値を扱う場合は1を指定
-#    args = parser.parse_args()
     
 def init_kmeans(k,data):
     print(data)
