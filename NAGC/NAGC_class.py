@@ -25,7 +25,7 @@ class NAGC:
         #T is a matrix between topic1 and topic2
         H = np.random.random((k1,k2))
         #create initialized matrices
-        U,V = VU_init.VU_init_njnmf(X,k1,k2,init,data)
+        U,V = VU_init.VU_init(X,k1,k2,init,data)
         # a = (1.0+rho)/2
         # W = np.abs(S_ori-1)
         W_ = 1-W

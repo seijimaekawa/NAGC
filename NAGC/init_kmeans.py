@@ -24,17 +24,17 @@ def clustering(A,k):
     for i in range(len(pred)):
         kmeans_clus[pred[i]].append(i)
     return pred, centroids, kmeans_clus
-def initialize_V(A, centroids):
-    V = np.zeros((len(A),len(centroids)))
-    for i in range(V.shape[0]):
+def initialize_U(A, centroids):
+    U = np.zeros((len(A),len(centroids)))
+    for i in range(U.shape[0]):
         dis_list = []
-        for j in range(V.shape[1]):
+        for j in range(U.shape[1]):
             dis_list.append(np.linalg.norm(A[i]-centroids[j]))
-        for j in range(V.shape[1]):
-            V[i,j]= (sum(dis_list)-dis_list[j]) / sum(dis_list)
-        V[i,:] = V[i,:] / sum(V[i,:])
-    return V
-    
+        for j in range(U.shape[1]):
+            U[i,j]= (sum(dis_list)-dis_list[j]) / sum(dis_list)
+        U[i,:] = U[i,:] / sum(U[i,:])
+    return U
+
 def init_kmeans(k,data):
     print(data)
 
@@ -60,12 +60,12 @@ def init_kmeans(k,data):
     pred=pred_l[ind]
     centroids=cent_l[ind]
     kmeans_clus=km_l[ind]
-    V = initialize_V(A_ori, centroids)
-    f = open('initialize/'+data+'_V_'+str(k)+'.csv','w')
-    writer = csv.writer(f, lineterminator='\n')
-    writer.writerows(V)
-    f.close()
+    U = initialize_U(A_ori, centroids)
     f = open('initialize/'+data+'_U_'+str(k)+'.csv','w')
+    writer = csv.writer(f, lineterminator='\n')
+    writer.writerows(U)
+    f.close()
+    f = open('initialize/'+data+'_V_'+str(k)+'.csv','w')
     writer = csv.writer(f, lineterminator='\n')
     writer.writerows(centroids)
     f.close()
