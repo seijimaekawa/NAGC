@@ -68,10 +68,6 @@ def cal_nmi(true_clus, clus):
         n_l.append(len(clus[i]))
 
 ########### print No. labels ###############
-    # print("true_No.label : [ "),
-    # for i in range(len(n_h)):
-    #     print(str(n_h[i])+" "),
-    # print(']')
     print("estimate_No.label : [ ",end="")
     for i in range(len(n_l)):
         print(str(n_l[i])+" ",end="")
