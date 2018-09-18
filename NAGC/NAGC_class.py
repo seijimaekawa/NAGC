@@ -61,13 +61,6 @@ class NAGC:
             fdUH = dif_sig(U.dot(H))
             H = H*(U.transpose().dot(fdUH*(X.dot(V))))/(U.transpose().dot((fdUH*fUH).dot(V.transpose().dot(V))))
             return H
-        def check_convergence(S,X,U,H,V):
-        #    print loss_function(S,V,U,A,T,lam,S_ori,a)
-            return False
-        # def loss_function(V,U,T):
-        #     VVT = V.dot(V.transpose())
-        #     loss = a*np.linalg.norm(VVT*S_ori-S)+(1-a)*np.linalg.norm(VVT*np.abs(S_ori-1))+0.5*lam*np.linalg.norm(A-sigmoid(V.dot(T)).dot(U.transpose()))
-        #     return loss
         def removing_nan(mat):
             nan_list = np.argwhere(np.isnan(mat))
             for i in nan_list:
@@ -82,6 +75,7 @@ class NAGC:
         #learning step
         count = 0
         while 1:
+            count += 1
             # print loss_function(S,V,U,Z,A,T,lam)
             if self.rho == 0.5:
                 self.U = removing_nan(update_U_woPU(self.S,self.X,self.lam,self.U,self.H,self.V))
@@ -89,12 +83,8 @@ class NAGC:
                 self.U = removing_nan(update_U(self.S,self.W,self.W_,self.X,self.lam,self.U,self.H,self.V,self.rho))
             self.V = removing_nan(update_V(self.S,self.X,self.U,self.H,self.V))
             self.H = removing_nan(update_H(self.S,self.X,self.U,self.H,self.V))
-            if check_convergence(self.S,self.X,self.U,self.H,self.V) == True:
+            if count>=self.max_iter:
                 break
-            elif count>=self.max_iter:
-                break
-            count += 1
-
         elapsed_time = time.time() - start  #measure elapsed time
         print (("optimizing_time:{0}".format(elapsed_time)) + "[sec]")
         return self.U
