@@ -22,7 +22,7 @@ class NAGC:
     def __init__(self,k1,k2,lam,S,W,X,data,init=1,rho=0.5,max_iter=100):
         node_size = S.shape[0]
         att_size = X.shape[1]
-        #T is a matrix between topic1 and topic2
+        #H is a matrix between topic1 and topic2
         H = np.random.random((k1,k2))
         #create initialized matrices
         U,V = VU_init.VU_init(X,k1,k2,init,data)
