@@ -15,11 +15,20 @@ Journal: [New Attributed Graph Clustering by Bridging Attribute and Topology Spa
 If you find this repository useful, please consider giving a star and citing this work:
 
 ```bibtex
-@misc{izacard2021contriever,
-      title={Unsupervised Dense Information Retrieval with Contrastive Learning}, 
-      author={Gautier Izacard and Mathilde Caron and Lucas Hosseini and Sebastian Riedel and Piotr Bojanowski and Armand Joulin and Edouard Grave},
-      year={2021},
-      url = {https://arxiv.org/abs/2112.09118},
-      doi = {10.48550/ARXIV.2112.09118},
+@article{maekawa2018nagc,
+  title={Non-linear attributed graph clustering by symmetric NMF with PU learning},
+  author={Maekawa, Seiji and Takeuch, Koh and Onizuka, Makoto},
+  journal={arXiv preprint arXiv:1810.00946},
+  year={2018}
+}
+
+@article{maekawa2020nagc,
+  title={New Attributed Graph Clustering by Bridging Attribute and Topology Spaces},
+  author={Maekawa, Seiji and Takeuchi, Koh and Onizuka, Makoto},
+  journal={Journal of Information Processing},
+  volume={28},
+  pages={427--435},
+  year={2020},
+  publisher={Information Processing Society of Japan}
 }
 ```
