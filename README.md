@@ -1,5 +1,6 @@
 # NAGC
 Preprint: [Non-Linear Attributed Graph Clustering by Symmetric NMF with PU Learning](https://arxiv.org/abs/1810.00946)
+
 Journal: [New Attributed Graph Clustering by Bridging Attribute and Topology Spaces](https://www.jstage.jst.go.jp/article/ipsjjip/28/0/28_427/_pdf)
 
 ## Requirements
